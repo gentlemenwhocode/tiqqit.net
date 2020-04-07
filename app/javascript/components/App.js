@@ -1,5 +1,8 @@
 import React from "react"
-
+import { Router } from "react-router-dom"
+import IndexTicket from "./IndexTicket"
+import NewTicket from "./NewTicket"
+import ShowTicket from "./ShowTicket"
 
 class App extends React.Component {
   render () {

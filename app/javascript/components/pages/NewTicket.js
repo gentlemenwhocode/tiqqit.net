@@ -51,7 +51,7 @@ class NewTicket extends React.Component {
                         onChange={ this.handleChange }
                         value={ this.state.form.project_cat }
                     />
-                <Label htmlFor="prob_cat" id="tprob_cat">Type</Label>
+                <Label htmlFor="prob_cat" id="prob_cat">Type</Label>
                     <Input
                         type="string"
                         name="prob_cat"

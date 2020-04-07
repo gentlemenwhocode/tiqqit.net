@@ -1,7 +1,7 @@
-<h2> I LIVE HAHAHAAHAHAHAAHHAA </h2>
+<h2> Welcome to TIQQIT </h2>
 
 <%= react_component("App", {
-    logged_in: user_signed_in?,
+    logged_in: user_session,
     sign_in_route: new_user_session_path,
-    sign_out_route: destroy_user_session_path
+    sign_out_route: destroy_user_session
 }) %>

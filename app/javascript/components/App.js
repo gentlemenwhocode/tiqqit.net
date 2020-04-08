@@ -1,10 +1,38 @@
 import React from "react"
-import { Router } from "react-router-dom"
-import IndexTicket from "./IndexTicket"
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+
+
+import TicketIndex from "./pages/TicketIndex"
 import NewTicket from "./NewTicket"
 import ShowTicket from "./ShowTicket"
 
 class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      tickets: [],
+    }
+    this.getTickets()
+  }
+
+  componentDidMount(){
+    this.getTickets()
+  }
+
+  getTickets = () => {
+    fetch("http://localhost:3000/tickets")
+    .then((response)=>{
+      if(response.status === 200) {
+        return(response.json())
+      }
+    })
+    .then((ticketsArray) =>{
+      this.setState({
+        tickets: ticketsArray.tickets
+      })
+    })
+  }
+
   render () {
     const {
       logged_in,
@@ -14,6 +42,14 @@ class App extends React.Component {
 
     return (
       <React.Fragment>
+        <Router>
+        <Switch>
+          <Route
+            exact path="/ticketindex/"
+            render={ (props) => <TicketIndex tickets={ this.state.tickets } /> } />
+        </Switch>
+      </Router>
+
         {logged_in &&
           <div>
             <a href={sign_out_route}>Sign Out</a>

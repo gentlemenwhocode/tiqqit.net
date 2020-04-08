@@ -1,6 +1,6 @@
 import React from "react"
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
-import Header from "./components/header"
+import Header from "./Header"
 
 import TicketIndex from "./pages/TicketIndex"
 import NewTicket from "./pages/NewTicket"
@@ -47,19 +47,8 @@ class App extends React.Component {
         logged_in = { logged_in }
         sign_in_route = { sign_in_route }
         sign_out_route = { sign_out_route }
-        edit_user_route = { edit_user_route }
-        current_user = { current_user }
       />
-        {logged_in &&
-          <div>
-            <a href={sign_out_route}>Sign Out</a>
-          </div>
-        }
-        {!logged_in &&
-          <div>
-            <a href={sign_in_route}>Sign In</a>
-          </div>
-        }
+        
         <Router>
         <Switch>
           <Route

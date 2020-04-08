@@ -1,5 +1,5 @@
 import React from "react"
-import Background from "./header-background.png"
+
 
 class Header extends React.Component {
 
@@ -14,49 +14,39 @@ class Header extends React.Component {
 
     return (
       <React.Fragment>
-        <div class="jumbotron" style={{backgroundImage: `url(${Background})`, backgroundSize: "contain"}}>
-          <h1 class="display-3">Welcome to TIQQIT.net</h1>
-          <p class="lead">This is a lead text</p>
-          {current_user &&
-            <p>Welcome, { current_user.name }</p>
-          }
+        <div className="jumbotron">
+          <h1 className="display-3">Welcome to TIQQIT.net</h1>
+          <p className="lead">This is a lead text</p>
         </div>
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-          <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+          <div className="collapse navbar-collapse" id="navbarColor01">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item active">
+                <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/about">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/apartmentindex">Apartments</a>
+              <li className="nav-item">
+                <a className="nav-link" href="/ticketindex">All Tickets</a>
               </li>
               {!logged_in &&
                 <li>
-                  <a class="nav-link" href={sign_in_route}>Sign In</a>
+                  <a className="nav-link" href={sign_in_route}>Sign In</a>
                 </li>}
               {!logged_in &&
                 <li>
-                  <a class="nav-link" href="/users/sign_up">Sign Up</a>
+                  <a className="nav-link" href="/users/sign_up">Sign Up</a>
                 </li>}
               {logged_in &&
                 <li>
-                  <a class="nav-link" href="/mylistings">My Listings</a>
+                  <a className="nav-link" href="/mytickets">My Tickets</a>
                 </li>}
               {logged_in &&
                 <li>
-                  <a class="nav-link" href="/newform">New Apartment</a>
+                  <a className="nav-link" href="/newform">Create A New Ticket</a>
                 </li>}
               {logged_in &&
                 <li>
-                <a class="nav-link" href={edit_user_route}>Edit Your Account</a>
-                </li>}
-              {logged_in &&
-                <li>
-                  <a class="nav-link" href={sign_out_route}>Sign Out</a>
+                  <a className="nav-link" href={sign_out_route}>Sign Out</a>
                 </li>}
             </ul>
           </div>

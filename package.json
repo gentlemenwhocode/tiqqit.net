@@ -1,6 +1,5 @@
 {
   "name": "tiqqit_app",
-  "start": "node server/server.js",
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.9.4",

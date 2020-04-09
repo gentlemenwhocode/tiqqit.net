@@ -16,7 +16,10 @@
     "react-scripts": "^3.4.1",
     "react_ujs": "^2.6.1",
     "reactstrap": "^8.4.1",
-    "turbolinks": "^5.2.0",
+    "turbolinks": "^5.2.0"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
     "babel-jest": "^25.2.6",
@@ -26,18 +29,6 @@
     "react-test-renderer": "^16.13.1",
     "regenerator-runtime": "^0.13.5",
     "webpack-dev-server": "^3.10.3"
-  },
-  "version": "0.1.0",
-  "devDependencies": {
-    // "@babel/core": "^7.9.0",
-    // "@babel/preset-env": "^7.9.0",
-    // "babel-jest": "^25.2.6",
-    // "enzyme": "^3.11.0",
-    // "enzyme-adapter-react-16": "^1.15.2",
-    // "jest": "^25.2.7",
-    // "react-test-renderer": "^16.13.1",
-    // "regenerator-runtime": "^0.13.5",
-    // "webpack-dev-server": "^3.10.3"
   },
   "scripts": {
     "test": "jest",

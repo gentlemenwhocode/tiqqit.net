@@ -102,7 +102,7 @@ class NewTicket extends React.Component {
                     />
             </FormGroup>
              {/* CHANGE REDIRECT */}
-            <Button type="button" id="submit" class="btn btn-outline-primary"
+            <Button type="button" id="submit" className="btn btn-outline-primary"
               style={{margin:"1rem 8rem"}}
               onClick={ this.handleSubmit }>
               Create a New Ticket

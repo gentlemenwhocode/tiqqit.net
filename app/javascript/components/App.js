@@ -30,7 +30,7 @@ class App extends React.Component {
     .then((ticketsArray) =>{
       console.log(ticketsArray)
       this.setState({
-        tickets: ticketsArray
+        tickets: ticketsArray.tickets
       })
     })
   }

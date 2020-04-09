@@ -23,7 +23,7 @@ class TicketIndex extends React.Component {
             </tr>
           </thead>
           <tbody>
-        { this.props.tickets.map((tickets, index) => {
+        { this.props.tickets.map((ticket, index) => {
         return(
           <tr key={ index }>
             <th scope="row"><a href = {`/ticketindex/${ticket.id}`}>{ ticket.title }</a></th>

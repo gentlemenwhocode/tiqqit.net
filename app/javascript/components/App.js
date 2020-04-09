@@ -11,7 +11,7 @@ class App extends React.Component {
     super()
     this.state = {
       tickets: [],
-      myTickets:[]
+      // myTickets:[]
     }
     this.getTickets()
   }
@@ -28,8 +28,9 @@ class App extends React.Component {
       }
     })
     .then((ticketsArray) =>{
+      console.log(ticketsArray)
       this.setState({
-        tickets: ticketsArray.tickets
+        tickets: ticketsArray
       })
     })
   }

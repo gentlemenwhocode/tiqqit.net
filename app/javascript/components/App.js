@@ -35,6 +35,21 @@ class App extends React.Component {
     })
   }
 
+  createTicket = (newTicket) => {
+    return fetch("http://localhost:3000/tickets", {
+    	body: JSON.stringify(newTicket),
+    	headers: {
+    		"Content-Type": "application/json"
+    	},
+    	method: "POST"
+    })
+    .then((response) => {
+      if(response.ok){
+        return this.getTickets()
+      }
+    })
+  }
+
   render () {
     const {
       logged_in,
@@ -55,6 +70,9 @@ class App extends React.Component {
           <Route
             exact path="/ticketindex/"
             render={ (props) => <TicketIndex tickets={ this.state.tickets } /> } />
+            <Route
+            exact path="/newticket/"
+            render={ (props) => <NewTicket handleSubmit={ this.createTicket} /> } />
         </Switch>
       </Router>
         

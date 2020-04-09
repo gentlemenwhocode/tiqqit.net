@@ -22,4 +22,10 @@ class TicketsController < ApplicationController
       render json: @ticket.errors, status: :unprocessable_entity
     end
   end
+
+  private
+
+  def ticket_params
+    params.require(:ticket).permit(:title, :project_cat, :prob_cat, :priority, :desc, :status, :due_date, :image, :comments)
+  end
 end

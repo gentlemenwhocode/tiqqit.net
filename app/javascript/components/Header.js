@@ -43,7 +43,7 @@ class Header extends React.Component {
                 </li>}
               {logged_in &&
                 <li>
-                  <a className="nav-link" href="/newform">Create A New Ticket</a>
+                  <a className="nav-link" href="/newticket">Create A New Ticket</a>
                 </li>}
               {logged_in &&
                 <li>

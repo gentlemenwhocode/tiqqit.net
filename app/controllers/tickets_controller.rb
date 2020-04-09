@@ -1,11 +1,11 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: [:show, :update, :create, :destroy]
-  before_action :authenticate_user!, only: [:update, :destroy, :create]
+  # before_action :set_ticket, only: [:create]
+  # before_action :authenticate_user!, only: [:update, :destroy, :create]
   skip_before_action :verify_authenticity_token
 
   def index
     @tickets = Ticket.all
-    render json: { tickets: @tickets }
+    render json: {tickets: @tickets}
     # if current_user == nil
     #   @my_tickets = []
     # else

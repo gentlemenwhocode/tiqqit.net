@@ -5,13 +5,14 @@ import Header from "./Header"
 import TicketIndex from "./pages/TicketIndex"
 import NewTicket from "./pages/NewTicket"
 import ShowTicket from "./pages/ShowTicket"
+import TicketEdit from "./pages/TicketEdit"
 
 class App extends React.Component {
   constructor() {
     super()
     this.state = {
       tickets: [],
-      // myTickets:[]
+      myTickets:[]
     }
     this.getTickets()
   }
@@ -53,7 +54,8 @@ class App extends React.Component {
     const {
       logged_in,
       sign_in_route,
-      sign_out_route
+      sign_out_route,
+      current_user
     } = this.props
 
     return (
@@ -62,6 +64,8 @@ class App extends React.Component {
         logged_in = { logged_in }
         sign_in_route = { sign_in_route }
         sign_out_route = { sign_out_route }
+        current_user = { current_user }
+        myTickets = { this.state.myTickets }
       />
         
         <Router>
@@ -76,6 +80,13 @@ class App extends React.Component {
             <Route
             exact path="/newticket/"
             render={ (props) => <NewTicket handleSubmit={ this.createTicket} /> } />
+
+            <Route
+            exact path="/mytickets/"
+            render={ (props) => <TicketEdit
+            tickets={ this.state.myTickets }
+            getTickets={ this.getTickets }
+            /> } />
         </Switch>
       </Router>
         

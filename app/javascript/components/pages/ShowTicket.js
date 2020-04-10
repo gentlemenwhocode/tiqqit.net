@@ -29,8 +29,9 @@ class ShowTicket extends Component {
         user: ticketInfo.user
       })
     })
-    console.log(this.state.ticket)  
+ 
   }
+  
 
   render(){
     const { ticket, user } = this.state
@@ -56,6 +57,7 @@ class ShowTicket extends Component {
           onClick={() => window.history.back()}>
           Back
         </button>
+
         </React.Fragment>
       );
   }

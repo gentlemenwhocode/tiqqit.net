@@ -15,7 +15,7 @@ class Header extends React.Component {
     return (
       <React.Fragment>
         <div className="jumbotron">
-          <h1 className="display-3">Welcome to TIQQIT.net</h1>
+          <h1 className="display-3"> LOGO GO HERE Welcome to TIQQIT.net</h1>
           <p className="lead">This is a lead text</p>
         </div>
 

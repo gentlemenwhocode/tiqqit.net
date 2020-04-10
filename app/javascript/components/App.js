@@ -28,7 +28,6 @@ class App extends React.Component {
       }
     })
     .then((ticketsArray) =>{
-      console.log(ticketsArray)
       this.setState({
         tickets: ticketsArray.tickets
       })
@@ -70,6 +69,10 @@ class App extends React.Component {
           <Route
             exact path="/ticketindex/"
             render={ (props) => <TicketIndex tickets={ this.state.tickets } /> } />
+            <Route
+            exact path="/ticketindex/:id"
+            render={ (props) => <ShowTicket {...props}
+            /> } />
             <Route
             exact path="/newticket/"
             render={ (props) => <NewTicket handleSubmit={ this.createTicket} /> } />

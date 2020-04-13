@@ -10042,6 +10042,10 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
+react-activestorage-provider@winescout/react-activestorage-provider:
+  version "0.0.0"
+  resolved "https://codeload.github.com/winescout/react-activestorage-provider/tar.gz/4f57269dd3e76b98f11ad7a6784b93b93ea61156"
+
 react-app-polyfill@^1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/react-app-polyfill/-/react-app-polyfill-1.0.6.tgz#890f8d7f2842ce6073f030b117de9130a5f385f0"

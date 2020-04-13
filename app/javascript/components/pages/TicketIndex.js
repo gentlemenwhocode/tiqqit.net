@@ -13,11 +13,11 @@ class TicketIndex extends React.Component {
               <th scope="col">Title</th>
               <th scope="col">Project Category</th>
               <th scope="col">Type</th>
+              <th scope="col">Priority</th>
               <th scope="col">Description</th>
               <th scope="col">Status</th>
               <th scope="col">Due Date</th>
               <th scope="col">Image</th>
-              <th scope="col">Comments</th>
               <th scope="col">Created By</th>
               <th scope="col">Created On</th>
             </tr>
@@ -27,7 +27,6 @@ class TicketIndex extends React.Component {
         return(
           <tr key={ index }>
             <th scope="row"><a href = {`/ticketindex/${ticket.id}`}>{ ticket.title }</a></th>
-            <td>{ ticket.title }</td>
             <td>{ ticket.project_cat }</td>
             <td>{ ticket.prob_cat }</td>
             <td>{ ticket.priority }</td>

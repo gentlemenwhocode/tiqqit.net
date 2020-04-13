@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from "react-router-dom"
+//import ActiveStorageProvider from 'react-activestorage-provider'
 
 class TicketEdit extends Component {
     constructor(props){

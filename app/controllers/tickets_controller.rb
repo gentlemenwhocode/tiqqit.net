@@ -23,6 +23,7 @@ class TicketsController < ApplicationController
   end
 
   def update
+    @ticket = Ticket.find(params[:id])
     @ticket.update_attributes(ticket_params)
     render json: @ticket
   end
@@ -30,7 +31,7 @@ class TicketsController < ApplicationController
   def destroy
     @ticket.destroy
   end
-  
+
   def show
     @user = User.find(@ticket.user_id)
     render json: { ticket:@ticket, user:@user }

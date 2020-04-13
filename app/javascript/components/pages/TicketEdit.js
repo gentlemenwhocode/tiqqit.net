@@ -127,12 +127,11 @@ class TicketEdit extends Component {
                               )
                           }
                         })}
-                    )}
-                  </div>
+                    </div>
                     )}
                     />
                   </div>
-
+                }
 
                 <table className="table table-hover">
                   <thead>
@@ -224,10 +223,11 @@ class TicketEdit extends Component {
                 })}
                   </tbody>
                 </table>
+                
                 { this.state.success && <Redirect to="/ticketindex"/> }
                 
-          
               </React.Fragment>
+          
           );
           }
         }

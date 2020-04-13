@@ -77,7 +77,6 @@ class TicketEdit extends Component {
             return (
               <React.Fragment>
 
-
                 {ticket &&
                   <div>
                     <h1>Ticket Title: {ticket.title} </h1>

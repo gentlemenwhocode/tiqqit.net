@@ -15,7 +15,6 @@ class NewTicket extends React.Component {
                 desc: '',
                 status: '',
                 due_date: '',
-                image: '',
                 comments: '',
             }
 
@@ -85,13 +84,6 @@ class NewTicket extends React.Component {
                         name="due_date"
                         onChange={ this.handleChange }
                         value={ this.state.form.due_date }
-                    />
-                <Label htmlFor="image" id="image">Image</Label>
-                    <Input
-                        type="string"
-                        name="image"
-                        onChange={ this.handleChange }
-                        value={ this.state.form.image }
                     />
                 <Label htmlFor="comments" id="comments">Comments</Label>
                     <Input

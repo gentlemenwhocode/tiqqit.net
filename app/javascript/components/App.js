@@ -83,6 +83,7 @@ class App extends React.Component {
             <Route
             exact path="/mytickets/"
             render={ (props) => <TicketEdit
+            {...props}
             tickets={ this.state.tickets }
             getTickets={ this.getTickets }
             /> } />

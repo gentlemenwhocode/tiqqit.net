@@ -12,7 +12,6 @@ class App extends React.Component {
     super()
     this.state = {
       tickets: [],
-      myTickets:[]
     }
     this.getTickets()
   }

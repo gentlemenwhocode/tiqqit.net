@@ -7,8 +7,8 @@
 		</div>
     </div> %>
 
-<div class="login-content">
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "input-div one") do |f| %>
+<div class="login-content-1">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "input-div one-1") do |f| %>
     <div class="div">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
@@ -27,7 +27,7 @@
     <% end %>
 
     <div class="div">
-      <%= f.submit "Log in", class: "btn" %>
+      <%= f.submit "Log in", class: "btn1" %>
     </div>
 </div>
 <% end %>

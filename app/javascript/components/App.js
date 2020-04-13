@@ -84,7 +84,7 @@ class App extends React.Component {
             <Route
             exact path="/mytickets/"
             render={ (props) => <TicketEdit
-            tickets={ this.state.myTickets }
+            tickets={ this.state.tickets }
             getTickets={ this.getTickets }
             /> } />
         </Switch>

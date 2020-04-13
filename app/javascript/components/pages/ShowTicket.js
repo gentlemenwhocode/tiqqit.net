@@ -51,6 +51,11 @@ class ShowTicket extends Component {
         <div> LAST UPDATED: {ticket.updated_at} </div> 
 
 
+        <button type="button" className="btn btn-info btn-sm"
+          onClick={() => this.handleEdit(`${ ticket.id }`)}
+          style={{margin:"0 0.5em"}}>
+          {(this.state.editable == `${ ticket.id }`)? 'Submit' : 'Edit'}
+        </button>
 
         <button type="button" className="btn btn-outline-primary"
           style={{margin:"1rem 9.5rem"}}

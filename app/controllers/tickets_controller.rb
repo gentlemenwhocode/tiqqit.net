@@ -27,6 +27,10 @@ class TicketsController < ApplicationController
     render json: @ticket
   end
 
+  def destroy
+    @ticket.destroy
+  end
+  
   def show
     @user = User.find(@ticket.user_id)
     render json: { ticket:@ticket, user:@user }

@@ -1,14 +1,23 @@
 import React, { Component } from 'react'
 import { Redirect } from "react-router-dom"
-//import ActiveStorageProvider from 'react-activestorage-provider'
+import ActiveStorageProvider from 'react-activestorage-provider'
 
 class TicketEdit extends Component {
     constructor(props){
         super(props)
+        const id = parseInt(props.match.params.id)
+        const ticket = props.tickets.find(ticket => ticket.id === id )
         this.state={
+          ticket,
           success: false,
           editable: null
         }
+      }
+
+      //Ticket photo upload handleSubmit
+
+      handleSubmit = (ticket)=>{
+        this.setState({ ticket })
       }
 
       handleDelete = (id) => {
@@ -64,8 +73,54 @@ class TicketEdit extends Component {
 
 
           render () {
+            const{ ticket } = this.state
             return (
               <React.Fragment>
+
+
+                {ticket &&
+                  <div>
+                    <h1>Ticket Title: {ticket.title} </h1>
+                    {ticket && ticket.image_url &&
+                    <div>
+                      <h2>The Image is: </h2>
+                      <img src={ticket.image_url} />
+                    </div>
+                    }
+                  <ActiveStorageProvider
+                    endpoint={{
+                      path: `/tickets/${ticket.id}`,
+                      host: 'localhost:3000',
+                      protocol: 'http',
+                      model: 'Ticket',
+                      attribute: 'image',
+                      method: 'PUT',
+                    }}
+                    onSubmit={this.handleSubmit}
+                    render={({ handleUpload, uploads, ready}) => (
+                      <div>
+                        <input
+                          type="file"
+                          disabled={!ready}
+                          onChange={e => handleUpload(e.currentTarget.files)}
+                        />
+                        
+                    )}
+                  </div>
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <table className="table table-hover">
                   <thead>
                     <tr>

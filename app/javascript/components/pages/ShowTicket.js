@@ -9,7 +9,7 @@ class ShowTicket extends Component {
       ticket:[],
       user:[],
       success: false,
-      editable: null
+      editable: false
     }
     this.getTicket()
   }
@@ -83,14 +83,34 @@ class ShowTicket extends Component {
           return this.props.getTickets()
         })
     }
-  
 
+  
+  
   render(){
-    const { ticket, user } = this.state
+    const { ticket, user, editable } = this.state
       return(
         <React.Fragment>
-        <div>TITLE: (this.state.editable == `${ ticket.id }`)?
-        <input type='text'
+
+        {!editable && 
+        <div>
+          <div> TITLE: {ticket.title} </div>
+          <div> CREATED BY: {ticket.email} </div>
+          <div> PROJECT CATEGORY: {ticket.project_cat} </div>
+          <div> PROBLEM CAT/TYPE: {ticket.prob_cat} </div>
+          <div> PRIORITY: {ticket.priority} </div>
+          <div> DESCRIPTION: {ticket.desc} </div>
+          <div> STATUS: {ticket.status} </div>
+          <div> DUE DATE: {ticket.due_date} </div>
+          <div> COMMENTS: {ticket.comments} </div>
+          <div> CREATED ON: {ticket.created_at} </div>
+          <div> LAST UPDATED: {ticket.updated_at} </div>
+        </div>
+        }  
+        
+        {editable &&
+        <div>
+        <div>TITLE:
+        <input type='text' id="update"
                   ref={input => this.title = input}
                   defaultValue={ ticket.title }/>
         </div>
@@ -98,32 +118,32 @@ class ShowTicket extends Component {
         <div> CREATED BY: {user.email} </div>
 
 
-        <div> PROJECT CATEGORY: <input type='text'
+        <div> PROJECT CATEGORY: <input type='text' id="update"
                   ref={input => this.project_cat = input}
                   defaultValue={ ticket.project_cat}/>
         </div> 
 
-        <div>PROBLEM CAT/TYPE: <input type='text'
+        <div>PROBLEM CAT/TYPE: <input type='text' id="update"
                   ref={input => this.prob_cat = input}
                   defaultValue={ ticket.prob_cat}/>
         </div> 
 
-        <div> PRIORITY: <input type='text'
+        <div> PRIORITY: <input type='text' id="update"
                   ref={input => this.priority = input}
                   defaultValue={ ticket.priority}/>
         </div> 
 
-        <div> DESCRIPTION: <input type='text'
+        <div> DESCRIPTION: <input type='text' id="update"
                   ref={input => this.desc = input}
                   defaultValue={ ticket.desc} />
         </div> 
 
-        <div> STATUS: <input type='text'
+        <div> STATUS: <input type='text' id="update"
                   ref={input => this.status = input}
                   defaultValue={ ticket.status} />
         </div>
 
-        <div> DUE DATE:<input type='text'
+        <div> DUE DATE:<input type='text' id="update"
                   ref={input => this.due_date = input}
                   defaultValue={ ticket.due_date} />
         </div>
@@ -132,12 +152,14 @@ class ShowTicket extends Component {
 
         <div> CREATED ON: {ticket.created_at} </div>
 
-        <div> LAST UPDATED: {ticket.updated_at} </div> 
+        <div> LAST UPDATED: {ticket.updated_at} </div>
+        </div>}
 
         <button type="button" className="btn btn-info btn-sm"
           onClick={() => this.handleEdit(`${ ticket.id }`)}
           style={{margin:"0 0.5em"}}>
           {(this.state.editable == `${ ticket.id }`)? 'Submit' : 'Edit'}
+          
         </button>
 
         <button type="button" className="btn btn-danger btn-sm"
@@ -150,7 +172,9 @@ class ShowTicket extends Component {
           onClick={() => window.history.back()}>
           Back
         </button>
-        { this.state.success && <Redirect to="/ticketindex"/> }
+
+        { this.state.success && <Redirect to="/ticketindex"/>}
+        
 
         </React.Fragment>
       );

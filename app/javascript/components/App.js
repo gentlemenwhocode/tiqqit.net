@@ -12,6 +12,7 @@ class App extends React.Component {
     super()
     this.state = {
       tickets: [],
+      myTickets: []
     }
     this.getTickets()
   }
@@ -75,6 +76,8 @@ class App extends React.Component {
             <Route
             exact path="/ticketindex/:id"
             render={ (props) => <ShowTicket {...props}
+            tickets={ this.state.tickets }
+            getTickets={ this.getTickets }
             /> } />
             <Route
             exact path="/newticket/"

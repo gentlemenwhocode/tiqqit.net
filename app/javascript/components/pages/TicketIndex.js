@@ -17,7 +17,6 @@ class TicketIndex extends React.Component {
               <th scope="col">Description</th>
               <th scope="col">Status</th>
               <th scope="col">Due Date</th>
-              <th scope="col">Image</th>
               <th scope="col">Created By</th>
               <th scope="col">Created On</th>
             </tr>
@@ -33,7 +32,6 @@ class TicketIndex extends React.Component {
             <td>{ ticket.desc }</td>
             <td>{ ticket.status }</td>
             <td>{ ticket.due_date }</td>
-            <td>{ ticket.image }</td>
             <td>{ ticket.user_id }</td>
             <td>{ ticket.created_at }</td>
           </tr>

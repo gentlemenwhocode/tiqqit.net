@@ -45,11 +45,11 @@ class TicketEdit extends Component {
               let project_cat = this.project_cat.value
               let prob_cat = this.prob_cat.value
               let priority = this.priority.value
-              let description = this.desc.value
+              let desc = this.desc.value
               let status = this.status.value
               let due_date = this.due_date.value
               let image = this.image.value
-              let ticket = { title: title, project_cat: project_cat, prob_cat: prob_cat, priority: priority, description: description, status: status, due_date: due_date, image: image}
+              let ticket = { title: title, project_cat: project_cat, prob_cat: prob_cat, priority: priority, desc: desc, status: status, due_date: due_date, image: image}
               this.handleUpdate(ticket, id)
             }else{
            this.setState({

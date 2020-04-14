@@ -98,8 +98,6 @@ class TicketEdit extends Component {
                 defaultValue={ ticket.project_cat }/></td>:
               <td>{ ticket.project_cat }</td>}
 
-
-
             {(this.state.editable == `${ ticket.id }`)?
               <td><input type='text'
                 ref={input => this.prob_cat = input}

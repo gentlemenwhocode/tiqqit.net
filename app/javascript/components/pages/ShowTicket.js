@@ -110,7 +110,7 @@ class ShowTicket extends Component {
         {editable &&
         <div>
         <div>TITLE:
-        <input type='text' id="update"
+        <input type='text'
                   ref={input => this.title = input}
                   defaultValue={ ticket.title }/>
         </div>
@@ -118,32 +118,32 @@ class ShowTicket extends Component {
         <div> CREATED BY: {user.email} </div>
 
 
-        <div> PROJECT CATEGORY: <input type='text' id="update"
+        <div> PROJECT CATEGORY: <input type='text'
                   ref={input => this.project_cat = input}
                   defaultValue={ ticket.project_cat}/>
         </div> 
 
-        <div>PROBLEM CAT/TYPE: <input type='text' id="update"
+        <div>PROBLEM CAT/TYPE: <input type='text'
                   ref={input => this.prob_cat = input}
                   defaultValue={ ticket.prob_cat}/>
         </div> 
 
-        <div> PRIORITY: <input type='text' id="update"
+        <div> PRIORITY: <input type='text'
                   ref={input => this.priority = input}
                   defaultValue={ ticket.priority}/>
         </div> 
 
-        <div> DESCRIPTION: <input type='text' id="update"
+        <div> DESCRIPTION: <input type='text'
                   ref={input => this.desc = input}
                   defaultValue={ ticket.desc} />
         </div> 
 
-        <div> STATUS: <input type='text' id="update"
+        <div> STATUS: <input type='text'
                   ref={input => this.status = input}
                   defaultValue={ ticket.status} />
         </div>
 
-        <div> DUE DATE:<input type='text' id="update"
+        <div> DUE DATE:<input type='text'
                   ref={input => this.due_date = input}
                   defaultValue={ ticket.due_date} />
         </div>

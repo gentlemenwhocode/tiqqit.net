@@ -4,7 +4,6 @@ import React from "react"
 class TicketIndex extends React.Component {
     
   render(){
-    console.log(this.props.tickets)
       return(
         <React.Fragment>
              <table className="table table-hover">

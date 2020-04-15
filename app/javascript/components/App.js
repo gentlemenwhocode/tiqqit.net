@@ -6,6 +6,7 @@ import TicketIndex from "./pages/TicketIndex"
 import NewTicket from "./pages/NewTicket"
 import ShowTicket from "./pages/ShowTicket"
 import TicketEdit from "./pages/TicketEdit"
+import TicketImage from "./pages/TicketImage"
 
 class App extends React.Component {
   constructor() {
@@ -90,6 +91,14 @@ class App extends React.Component {
             tickets={ this.state.tickets }
             getTickets={ this.getTickets }
             /> } />
+            
+            <Route
+            exact path="/ticketimage/:id"
+            render={ (props) => <TicketImage
+            {...props}
+            tickets={ this.state.tickets }
+            /> } />
+
         </Switch>
       </Router>
         

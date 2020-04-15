@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Redirect } from "react-router-dom"
+import { Redirect, Link } from "react-router-dom"
 
 class TicketEdit extends Component {
     constructor(props){
@@ -139,6 +139,7 @@ class TicketEdit extends Component {
               onClick={() => this.handleEdit(`${ ticket.id }`)}
               style={{margin:"0 0.5em"}}>
               {(this.state.editable == `${ ticket.id }`)? 'Submit' : 'Edit'}</button>
+            <Link to={`/ticketimage/${ticket.id}`}>Upload Image</Link> 
             </td>
           </tr>
           )

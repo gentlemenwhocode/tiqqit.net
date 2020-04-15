@@ -7,7 +7,6 @@ class ShowTicket extends Component {
     super(props)
     this.state = {
       ticket:[],
-      user:[],
       success: false,
       editable: false
     }
@@ -28,8 +27,7 @@ class ShowTicket extends Component {
     })
     .then((ticketInfo) => {
       this.setState({
-        ticket: ticketInfo.ticket,
-        user: ticketInfo.user
+        ticket: ticketInfo
       })
     })
  
@@ -94,7 +92,7 @@ class ShowTicket extends Component {
         {!editable && 
         <div>
           <div> TITLE: {ticket.title} </div>
-          <div> CREATED BY: {ticket.email} </div>
+          <div> CREATED BY: {ticket.user_email} </div>
           <div> PROJECT CATEGORY: {ticket.project_cat} </div>
           <div> PROBLEM CAT/TYPE: {ticket.prob_cat} </div>
           <div> PRIORITY: {ticket.priority} </div>
@@ -104,6 +102,8 @@ class ShowTicket extends Component {
           <div> COMMENTS: {ticket.comments} </div>
           <div> CREATED ON: {ticket.created_at} </div>
           <div> LAST UPDATED: {ticket.updated_at} </div>
+          <div><img src={ticket.image_url}></img></div>
+          <div>{ticket.image_url}</div>
         </div>
         }  
         
@@ -115,7 +115,7 @@ class ShowTicket extends Component {
                   defaultValue={ ticket.title }/>
         </div>
 
-        <div> CREATED BY: {user.email} </div>
+        <div> CREATED BY: {ticket.user_email} </div>
 
 
         <div> PROJECT CATEGORY: <input type='text'

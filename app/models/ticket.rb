@@ -9,5 +9,5 @@ class Ticket < ApplicationRecord
   validates :title, length: { minimum: 3 }
 
   #Allows images to be attached to ticket and processed through AWS S3
-  # has_one_attached :image
+  has_one_attached :image
 end

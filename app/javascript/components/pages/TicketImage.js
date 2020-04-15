@@ -30,10 +30,11 @@ handleSubmit = (ticket)=>{
                 </div>
                 }
                 <ActiveStorageProvider
-                endpoint={{
+                    endpoint={{
                     // tickets.id <= ticket.id ln:35
-                    path: `/tickets/${tickets.id}`,
-                    host: 'localhost:3000',
+                    path: `/tickets/${ticket.id}`,
+                    host: 'localhost',
+                    port: 3000,
                     protocol: 'http',
                     model: 'Ticket',
                     attribute: 'image',

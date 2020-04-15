@@ -10,7 +10,6 @@ class TicketsController < ApplicationController
     else
       @my_tickets = current_user.tickets.all
     end
-    render json: { tickets: @tickets, myTickets: @my_tickets }
   end
 
   def create
@@ -25,7 +24,7 @@ class TicketsController < ApplicationController
   def update
     @ticket = Ticket.find(params[:id])
     @ticket.update_attributes(ticket_params)
-    render json: @ticket
+    render :show
   end
 
   def destroy
@@ -33,8 +32,6 @@ class TicketsController < ApplicationController
   end
 
   def show
-    @user = User.find(@ticket.user_id)
-    render json: { ticket:@ticket, user:@user }
   end
 
   private

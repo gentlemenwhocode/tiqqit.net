@@ -102,7 +102,7 @@ class ShowTicket extends Component {
           <div> COMMENTS: {ticket.comments} </div>
           <div> CREATED ON: {ticket.created_at} </div>
           <div> LAST UPDATED: {ticket.updated_at} </div>
-          <div><img src={ticket.image_url}></img></div>
+          <div><img className="upload-image" src={ticket.image_url}></img></div>
           <div>{ticket.image_url}</div>
         </div>
         }  

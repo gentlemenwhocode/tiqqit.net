@@ -43,7 +43,7 @@ We're all pretty busy now adays, but every so often we will come back and add a 
 ## Sounds cool! Where can I see a live demo? 
 
 Aww, thanks. We're pretty proud of our work too. 
-If you want to see a live demo, simply visit [TIQQIT.net](www.tiqqit.net)
+If you want to see a live demo, simply visit [TIQQIT.net](localhost:3000)
 
 
 ## Installation?

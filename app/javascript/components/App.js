@@ -23,7 +23,7 @@ class App extends React.Component {
   }
 
   getTickets = () => {
-    fetch("http://www.tiqqit.net/tickets")
+    fetch("http://localhost:3000/tickets")
     .then((response)=>{
       if(response.status === 200) {
         return(response.json())
@@ -37,7 +37,7 @@ class App extends React.Component {
   }
 
   createTicket = (newTicket) => {
-    return fetch("http://www.tiqqit.net/tickets", {
+    return fetch("http://localhost:3000/tickets", {
     	body: JSON.stringify(newTicket),
     	headers: {
     		"Content-Type": "application/json"

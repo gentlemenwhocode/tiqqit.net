@@ -34,7 +34,6 @@ handleSubmit = (ticket)=>{
                     // tickets.id <= ticket.id ln:35
                     path: `/tickets/${ticket.id}`,
                     host: 'www.tiqqit.net',
-                    port: 3000,
                     protocol: 'http',
                     model: 'Ticket',
                     attribute: 'image',

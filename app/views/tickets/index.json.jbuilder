@@ -7,6 +7,10 @@ json.tickets @tickets do |ticket|
     json.desc ticket.desc
     json.status ticket.status
     json.due_date ticket.due_date
+    json.user_email ticket.user.email
+    json.comments ticket.comments
+    json.created_at ticket.created_at
+    json.updated_at ticket.updated_at
     json.image_url polymorphic_url(ticket.image) if ticket.image.attached?
 end
 json.myTickets @myTickets do |ticket|
@@ -18,5 +22,9 @@ json.myTickets @myTickets do |ticket|
     json.desc ticket.desc
     json.status ticket.status
     json.due_date ticket.due_date
+    json.user_email ticket.user.email
+    json.comments ticket.comments
+    json.created_at ticket.created_at
+    json.updated_at ticket.updated_at
     json.image_url polymorphic_url(ticket.image) if ticket.image.attached?
 end

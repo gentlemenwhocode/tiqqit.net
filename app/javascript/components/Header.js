@@ -1,4 +1,8 @@
 import React from "react"
+import "../stylesheets/application.scss"
+import logo from "../stylesheets/img/Tiqqit Bug.png"
+
+import {Jumbotron, Navbar, Nav} from 'react-bootstrap'
 
 
 class Header extends React.Component {
@@ -14,44 +18,52 @@ class Header extends React.Component {
 
     return (
       <React.Fragment>
-        <div className="jumbotron">
-          <h1 className="display-3"> LOGO GO HERE Welcome to TIQQIT.net</h1>
-          <p className="lead">This is a lead text</p>
-        </div>
+        <Jumbotron>
+            <h1>Welcome to Tiqqit.net</h1>
+            <p>
+              See your tickets below:
+            </p>
+        </Jumbotron>
 
-        <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-          <div className="collapse navbar-collapse" id="navbarColor01">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
-                <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
-              </li>
-              {logged_in &&
-              <li className="nav-item">
-                <a className="nav-link" href="/ticketindex">All Tickets</a>
-              </li>}
-              {!logged_in &&
-                <li>
-                  <a className="nav-link" href={sign_in_route}>Sign In</a>
-                </li>}
-              {!logged_in &&
-                <li>
-                  <a className="nav-link" href="/users/sign_up">Sign Up</a>
-                </li>}
-              {logged_in &&
-                <li>
-                  <a className="nav-link" href="/mytickets">My Tickets</a>
-                </li>}
-              {logged_in &&
-                <li>
-                  <a className="nav-link" href="/newticket">Create A New Ticket</a>
-                </li>}
-              {logged_in &&
-                <li>
-                  <a className="nav-link" href={sign_out_route}>Sign Out</a>
-                </li>}
-            </ul>
-          </div>
-        </nav>
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="mr-auto">
+              <Nav.Link href="/"><img
+                src={logo}
+                width="50"
+                height="50"
+                className="d-inline-block align-top"
+                alt="React Bootstrap logo"
+                ></img>
+                </Nav.Link> 
+              {logged_in && <Nav.Link href="/ticketindex">
+                <p>All Tickets</p>
+              </Nav.Link>}
+
+              {logged_in &&<Nav.Link href="/mytickets">
+                <p>My Tickets</p>
+              </Nav.Link>}
+
+              {logged_in && <Nav.Link href="/newticket">
+                <p >Create A New Ticket</p>
+              </Nav.Link>}
+
+              {!logged_in && <Nav.Link href={sign_in_route}>
+                <p>Sign In</p>
+              </Nav.Link>}
+
+              {!logged_in && <Nav.Link href="/users/sign_up">
+                <p>Sign Up</p>
+              </Nav.Link>}
+
+              {logged_in && <Nav.Link href={sign_out_route}>
+                <p>Sign Out</p>
+              </Nav.Link>}
+
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
       </React.Fragment>
     );
   }

@@ -1,6 +1,7 @@
 import React from "react"
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import Header from "./Header"
+import "../stylesheets/application.scss"
 
 import TicketIndex from "./pages/TicketIndex"
 import NewTicket from "./pages/NewTicket"

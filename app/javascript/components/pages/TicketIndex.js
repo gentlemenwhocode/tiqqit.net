@@ -31,7 +31,7 @@ class TicketIndex extends React.Component {
             <td>{ ticket.desc }</td>
             <td>{ ticket.status }</td>
             <td>{ ticket.due_date }</td>
-            <td>{ ticket.user_id }</td>
+            <td>{ ticket.user_email }</td>
             <td>{ ticket.created_at }</td>
           </tr>
           )

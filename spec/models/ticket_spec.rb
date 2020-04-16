@@ -41,9 +41,18 @@ RSpec.describe Ticket, type: :model do
     expect(ticket.errors[:comments]).to be_empty
   end
 
-  it "must have a title longer than 3 characters" do
-    ticket = Ticket.create(title: "Problem") 
-    expect(ticket.errors[:title]).to be_empty
+  it "must have a created at date" do
+    ticket = Ticket.create
+    expect(ticket.errors[:created_at]).to be_empty
+  end
+
+  describe 'The ticket model should belong to users' do
+    it {should belong_to(:user)}
+  end
+
+
+  it 'Should validate the length of ticket title to be atleast 3 characters long' do
+    should validate_length_of(:title).is_at_least(3).on(:create).with_message("Title must be 3 characters or longer!")
   end
 
 end

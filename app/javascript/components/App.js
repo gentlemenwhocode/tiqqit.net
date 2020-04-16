@@ -8,6 +8,7 @@ import NewTicket from "./pages/NewTicket"
 import ShowTicket from "./pages/ShowTicket"
 import TicketEdit from "./pages/TicketEdit"
 import TicketImage from "./pages/TicketImage"
+import JumboT  from "./JumboT"
 
 class App extends React.Component {
   constructor() {
@@ -62,6 +63,9 @@ class App extends React.Component {
 
     return (
       <React.Fragment>
+       
+        <JumboT/>
+        
         <Header
         logged_in = { logged_in }
         sign_in_route = { sign_in_route }

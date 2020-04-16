@@ -6,7 +6,7 @@ class TicketEdit extends Component {
         super(props)
         this.state={
           success: false,
-          editable: null
+          editable: false
         }
       }
 

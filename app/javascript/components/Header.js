@@ -18,13 +18,7 @@ class Header extends React.Component {
 
     return (
       <React.Fragment>
-        <Jumbotron>
-            <h1>Welcome to Tiqqit.net</h1>
-            <p>
-              See your tickets below:
-            </p>
-        </Jumbotron>
-
+        
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">

@@ -1,5 +1,6 @@
 import React, {Component} from "react"
 import { Redirect } from "react-router-dom"
+import {Card} from 'react-bootstrap'
 
 
 class ShowTicket extends Component {
@@ -84,77 +85,83 @@ class ShowTicket extends Component {
 
   
   
+
   render(){
     const { ticket, user, editable } = this.state
       return(
         <React.Fragment>
-
-        {!editable && 
-        <div>
-          <div> TITLE: {ticket.title} </div>
-          <div> CREATED BY: {ticket.user_email} </div>
-          <div> PROJECT CATEGORY: {ticket.project_cat} </div>
-          <div> PROBLEM CAT/TYPE: {ticket.prob_cat} </div>
-          <div> PRIORITY: {ticket.priority} </div>
-          <div> DESCRIPTION: {ticket.desc} </div>
-          <div> STATUS: {ticket.status} </div>
-          <div> DUE DATE: {ticket.due_date} </div>
-          <div> COMMENTS: {ticket.comments} </div>
-          <div> CREATED ON: {ticket.created_at} </div>
-          <div> LAST UPDATED: {ticket.updated_at} </div>
-          <div><img className="upload-image" src={ticket.image_url}></img></div>
-          <div>{ticket.image_url}</div>
-        </div>
-        }  
-        
-        {editable &&
-        <div>
-        <div>TITLE:
-        <input type='text'
+            {!editable && 
+              <Card
+              bg={'success'}
+              text={'light'}
+              style={{ width: '18rem' }}>
+            
+              <Card.Header>TITLE: {ticket.title} </Card.Header>
+              <Card.Body>
+                <Card.Title> PRIORITY: {ticket.priority} </Card.Title>
+                <Card.Text>
+                <div> CREATED BY: {ticket.user_email} </div>
+                <div> PROJECT CATEGORY: {ticket.project_cat} </div>
+                <div> PROBLEM CAT/TYPE: {ticket.prob_cat} </div>
+                <div> DESCRIPTION: {ticket.desc} </div>
+                <div> STATUS: {ticket.status} </div>
+                <div> DUE DATE: {ticket.due_date} </div>
+                <div> COMMENTS: {ticket.comments} </div>
+                <div> CREATED ON: {ticket.created_at} </div>
+                <div> LAST UPDATED: {ticket.updated_at} </div>
+                <div><img href={ticket.image_url} target="_blank" className="upload-image" src={ticket.image_url}></img></div>
+                </Card.Text>
+              </Card.Body>
+            </Card>
+           } 
+          
+          {editable && 
+              <Card
+              bg={'warning'}
+              text={'dark'}
+              style={{ width: '18rem' }}>
+            
+              <Card.Header>TITLE:
+                  <input type='text'
                   ref={input => this.title = input}
-                  defaultValue={ ticket.title }/>
-        </div>
-
-        <div> CREATED BY: {ticket.user_email} </div>
-
-
-        <div> PROJECT CATEGORY: <input type='text'
-                  ref={input => this.project_cat = input}
-                  defaultValue={ ticket.project_cat}/>
-        </div> 
-
-        <div>PROBLEM CAT/TYPE: <input type='text'
-                  ref={input => this.prob_cat = input}
-                  defaultValue={ ticket.prob_cat}/>
-        </div> 
-
-        <div> PRIORITY: <input type='text'
+                  defaultValue={ ticket.title }/> 
+                  </Card.Header>
+              <Card.Body>
+                <Card.Title>PRIORITY: 
+                  <input type='text'
                   ref={input => this.priority = input}
                   defaultValue={ ticket.priority}/>
-        </div> 
-
-        <div> DESCRIPTION: <input type='text'
-                  ref={input => this.desc = input}
-                  defaultValue={ ticket.desc} />
-        </div> 
-
-        <div> STATUS: <input type='text'
-                  ref={input => this.status = input}
-                  defaultValue={ ticket.status} />
-        </div>
-
-        <div> DUE DATE:<input type='text'
-                  ref={input => this.due_date = input}
-                  defaultValue={ ticket.due_date} />
-        </div>
-
-        <div> COMMENTS: {ticket.comments} </div>
-
-        <div> CREATED ON: {ticket.created_at} </div>
-
-        <div> LAST UPDATED: {ticket.updated_at} </div>
-        </div>}
-
+                  </Card.Title>
+                <Card.Text>
+                <div> CREATED BY: {ticket.user_email} </div>
+                <div> PROJECT CATEGORY: <input type='text'
+                          ref={input => this.project_cat = input}
+                          defaultValue={ ticket.project_cat}/>
+                </div> 
+                <div>PROBLEM CAT/TYPE: <input type='text'
+                          ref={input => this.prob_cat = input}
+                          defaultValue={ ticket.prob_cat}/>
+                </div> 
+                <div> DESCRIPTION: <input type='text'
+                          ref={input => this.desc = input}
+                          defaultValue={ ticket.desc} />
+                </div> 
+                <div> STATUS: <input type='text'
+                          ref={input => this.status = input}
+                          defaultValue={ ticket.status} />
+                </div>
+                <div> DUE DATE:<input type='text'
+                          ref={input => this.due_date = input}
+                          defaultValue={ ticket.due_date} />
+                </div>
+                <div> COMMENTS: {ticket.comments} </div>
+                <div> CREATED ON: {ticket.created_at} </div>
+                <div> LAST UPDATED: {ticket.updated_at} </div>
+                </Card.Text>
+              </Card.Body>
+            </Card>
+           } 
+         
         <button type="button" className="btn btn-info btn-sm"
           onClick={() => this.handleEdit(`${ ticket.id }`)}
           style={{margin:"0 0.5em"}}>
@@ -174,8 +181,7 @@ class ShowTicket extends Component {
         </button>
 
         { this.state.success && <Redirect to="/ticketindex"/>}
-        
-
+    
         </React.Fragment>
       );
   }

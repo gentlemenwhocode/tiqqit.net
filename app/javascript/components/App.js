@@ -8,7 +8,7 @@ import NewTicket from "./pages/NewTicket"
 import ShowTicket from "./pages/ShowTicket"
 import TicketEdit from "./pages/TicketEdit"
 import TicketImage from "./pages/TicketImage"
-import JumboT  from "./JumboT"
+import JumboT  from "./pages/JumboT"
 
 class App extends React.Component {
   constructor() {
@@ -63,8 +63,6 @@ class App extends React.Component {
 
     return (
       <React.Fragment>
-       
-        <JumboT/>
         
         <Header
         logged_in = { logged_in }
@@ -76,7 +74,10 @@ class App extends React.Component {
         
         <Router>
         <Switch>
-          <Route
+            <Route
+            exact path="/"
+            component= { JumboT } />
+            <Route
             exact path="/ticketindex/"
             render={ (props) => <TicketIndex tickets={ this.state.tickets } /> } />
             <Route

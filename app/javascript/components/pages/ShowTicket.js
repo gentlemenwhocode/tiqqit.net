@@ -1,15 +1,20 @@
 import React, {Component} from "react"
 import { Redirect } from "react-router-dom"
-import {Card} from 'react-bootstrap'
+import {Card, Modal, Button} from 'react-bootstrap'
+
 
 
 class ShowTicket extends Component {
   constructor(props){
     super(props)
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    
     this.state = {
       ticket:[],
       success: false,
-      editable: false
+      editable: false, 
+      show: false
     }
     this.getTicket()
   }
@@ -83,34 +88,62 @@ class ShowTicket extends Component {
         })
     }
 
+    handleClose() {
+      this.setState({ show: false });
+    }
   
-  
-
+    handleShow() {
+      this.setState({ show: true });
+    }
+    
   render(){
     const { ticket, user, editable } = this.state
       return(
         <React.Fragment>
             {!editable && 
               <Card
+              className="w-50 p-3"
+              style={{width: "20rem", marginLeft: "auto",
+              marginRight: "auto", alignItems: "center",
+              justifyContent: "center"}}
               bg={'success'}
               text={'light'}
-              style={{ width: '18rem' }}>
+              >
             
               <Card.Header>TITLE: {ticket.title} </Card.Header>
               <Card.Body>
                 <Card.Title> PRIORITY: {ticket.priority} </Card.Title>
-                <Card.Text>
-                <div> CREATED BY: {ticket.user_email} </div>
-                <div> PROJECT CATEGORY: {ticket.project_cat} </div>
-                <div> PROBLEM CAT/TYPE: {ticket.prob_cat} </div>
-                <div> DESCRIPTION: {ticket.desc} </div>
-                <div> STATUS: {ticket.status} </div>
-                <div> DUE DATE: {ticket.due_date} </div>
-                <div> COMMENTS: {ticket.comments} </div>
-                <div> CREATED ON: {ticket.created_at} </div>
-                <div> LAST UPDATED: {ticket.updated_at} </div>
-                <div><img href={ticket.image_url} target="_blank" className="upload-image" src={ticket.image_url}></img></div>
-                </Card.Text>
+                <Card.Text> CREATED BY: {ticket.user_email} </Card.Text>
+                <Card.Text> PROJECT CATEGORY: {ticket.project_cat} </Card.Text>
+                <Card.Text> PROBLEM CAT/TYPE: {ticket.prob_cat}</Card.Text>
+                <Card.Text> DESCRIPTION: {ticket.desc}</Card.Text>
+                <Card.Text> STATUS: {ticket.status}</Card.Text>
+                <Card.Text> DUE DATE: {ticket.due_date}</Card.Text>
+                <Card.Text> COMMENTS: {ticket.comments}</Card.Text>
+                <Card.Text> CREATED ON: {ticket.created_at}</Card.Text>
+                <Card.Text> LAST UPDATED: {ticket.updated_at}</Card.Text>
+                
+                {ticket.image_url &&
+                <Button variant="primary" onClick={this.handleShow} style={{width: "20rem", marginLeft: "auto",
+                marginRight: "auto", alignItems: "center",
+                justifyContent: "center"}}>
+                See Image
+                </Button>}
+
+                {!ticket.image_url &&
+                <Button variant="primary" style={{width: "20rem", marginLeft: "auto",
+                marginRight: "auto", alignItems: "center",
+                justifyContent: "center"}} >
+                No Image Attached
+                </Button>}
+
+                <Modal show={this.state.show} onHide={this.handleClose}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>TITLE: {ticket.title}</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body><div>
+                    <img className="img-fluid" src={ticket.image_url}></img></div></Modal.Body>
+                </Modal>
               </Card.Body>
             </Card>
            } 
@@ -119,12 +152,17 @@ class ShowTicket extends Component {
               <Card
               bg={'warning'}
               text={'dark'}
-              style={{ width: '18rem' }}>
+              className="w-50 p-3"
+              style={{width: "20rem", marginLeft: "auto",
+                  marginRight: "auto", alignItems: "center",
+                  justifyContent: "center"}}
+              >
             
               <Card.Header>TITLE:
                   <input type='text'
                   ref={input => this.title = input}
-                  defaultValue={ ticket.title }/> 
+                  defaultValue={ ticket.title }
+                  /> 
                   </Card.Header>
               <Card.Body>
                 <Card.Title>PRIORITY: 
@@ -132,54 +170,54 @@ class ShowTicket extends Component {
                   ref={input => this.priority = input}
                   defaultValue={ ticket.priority}/>
                   </Card.Title>
-                <Card.Text>
-                <div> CREATED BY: {ticket.user_email} </div>
-                <div> PROJECT CATEGORY: <input type='text'
+                <Card.Text> CREATED BY: {ticket.user_email} </Card.Text>
+                <Card.Text> PROJECT CATEGORY: <input type='text'
                           ref={input => this.project_cat = input}
                           defaultValue={ ticket.project_cat}/>
-                </div> 
-                <div>PROBLEM CAT/TYPE: <input type='text'
+                </Card.Text> 
+                <Card.Text>PROBLEM CAT/TYPE: <input type='text'
                           ref={input => this.prob_cat = input}
                           defaultValue={ ticket.prob_cat}/>
-                </div> 
-                <div> DESCRIPTION: <input type='text'
+                </Card.Text> 
+                <Card.Text>DESCRIPTION: <input type='text'
                           ref={input => this.desc = input}
                           defaultValue={ ticket.desc} />
-                </div> 
-                <div> STATUS: <input type='text'
+                </Card.Text> 
+                <Card.Text> STATUS: <input type='text'
                           ref={input => this.status = input}
                           defaultValue={ ticket.status} />
-                </div>
-                <div> DUE DATE:<input type='text'
+                </Card.Text>
+                <Card.Text> DUE DATE:<input type='text'
                           ref={input => this.due_date = input}
                           defaultValue={ ticket.due_date} />
-                </div>
-                <div> COMMENTS: {ticket.comments} </div>
-                <div> CREATED ON: {ticket.created_at} </div>
-                <div> LAST UPDATED: {ticket.updated_at} </div>
                 </Card.Text>
+                <Card.Text> COMMENTS: {ticket.comments} </Card.Text>
+                <Card.Text> CREATED ON: {ticket.created_at} </Card.Text>
+                <Card.Text> LAST UPDATED: {ticket.updated_at} </Card.Text>
               </Card.Body>
             </Card>
            } 
          
-        <button type="button" className="btn btn-info btn-sm"
-          onClick={() => this.handleEdit(`${ ticket.id }`)}
-          style={{margin:"0 0.5em"}}>
-          {(this.state.editable == `${ ticket.id }`)? 'Submit' : 'Edit'}
-          
-        </button>
+         <br></br>
+         <div className="buttons" style={{marginLeft: "auto",
+              marginRight: "auto", display: "flex", alignItems: "center",
+              justifyContent: "space-evenly ", maxWidth: "50%"}}>
+            <Button variant="warning"
+              onClick={() => this.handleEdit(`${ ticket.id }`)}
+            >
+              {(this.state.editable == `${ ticket.id }`)? 'Submit' : 'Edit'}
+            </Button>
 
-        <button type="button" className="btn btn-danger btn-sm"
-          onClick={() => this.handleDelete(`${ ticket.id }`)}
-          style={{margin:"0 0.5em"}}>
-          Delete</button>
+            <Button variant="danger"
+              onClick={() => this.handleDelete(`${ ticket.id }`)}
+            >
+            Delete</Button>
 
-        <button type="button" className="btn btn-outline-primary"
-          style={{margin:"1rem 9.5rem"}}
-          onClick={() => window.history.back()}>
-          Back
-        </button>
-
+            <Button variant="light"
+              onClick={() => window.history.back()}>
+              Back
+            </Button>
+        </div>
         { this.state.success && <Redirect to="/ticketindex"/>}
     
         </React.Fragment>

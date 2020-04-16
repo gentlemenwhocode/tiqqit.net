@@ -3,10 +3,7 @@ class Ticket < ApplicationRecord
   belongs_to :user
 
   #   Validations to check for presence
-  validates :title, :project_cat, :prob_cat, :priority, :desc, :status, :due_date, presence: true
-
-  #   Validation to make sure comments is optional
-  validates :comments, length: { is: 1 },  allow_blank: true
+   validates :title, :project_cat, :prob_cat, :priority, :desc, :status, :due_date, presence: true
 
   #   Validates that the title length is atleast 3.
   validates :title, length: { minimum: 3, message: "Title must be 3 characters or longer!" } 

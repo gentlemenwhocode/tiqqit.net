@@ -1,7 +1,7 @@
 import React from "react"
-import "../stylesheets/application.scss"
+import "../../stylesheets/application.scss"
 
-import {Jumbotron,} from 'react-bootstrap'
+import {Jumbotron} from 'react-bootstrap'
 
 
 class JumboT extends React.Component {
@@ -12,9 +12,6 @@ class JumboT extends React.Component {
       <React.Fragment>
         <Jumbotron>
             <h1>Welcome to Tiqqit.net</h1>
-            <p>
-              See your tickets below:
-            </p>
         </Jumbotron>
       </React.Fragment>
     );

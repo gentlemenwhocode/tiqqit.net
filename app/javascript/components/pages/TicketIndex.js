@@ -1,30 +1,30 @@
 import React from "react"
-
+import {Table} from 'react-bootstrap'
 
 class TicketIndex extends React.Component {
     
   render(){
       return(
         <React.Fragment>
-             <table className="table table-hover">
+          <Table responsive striped bordered hover variant="light">
           <thead>
             <tr>
-              <th scope="col">Title</th>
-              <th scope="col">Project Category</th>
-              <th scope="col">Type</th>
-              <th scope="col">Priority</th>
-              <th scope="col">Description</th>
-              <th scope="col">Status</th>
-              <th scope="col">Due Date</th>
-              <th scope="col">Created By</th>
-              <th scope="col">Created On</th>
+              <th >Title</th>
+              <th >Project Category</th>
+              <th >Type</th>
+              <th >Priority</th>
+              <th >Description</th>
+              <th >Status</th>
+              <th >Due Date</th>
+              <th >Created By</th>
+              <th >Created On</th>
             </tr>
           </thead>
           <tbody>
         { this.props.tickets.map((ticket, index) => {
         return(
           <tr key={ index }>
-            <th scope="row"><a href = {`/ticketindex/${ticket.id}`}>{ ticket.title }</a></th>
+            <th><a href = {`/ticketindex/${ticket.id}`}>{ ticket.title }</a></th>
             <td>{ ticket.project_cat }</td>
             <td>{ ticket.prob_cat }</td>
             <td>{ ticket.priority }</td>
@@ -37,7 +37,7 @@ class TicketIndex extends React.Component {
           )
         })}
           </tbody>
-        </table>
+        </Table>
         </React.Fragment>
       );
   }

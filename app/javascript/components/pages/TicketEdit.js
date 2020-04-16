@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect, Link } from "react-router-dom"
+import {Table} from 'react-bootstrap'
 
 class TicketEdit extends Component {
     constructor(props){
@@ -65,16 +66,16 @@ class TicketEdit extends Component {
     
     return (
       <React.Fragment>
-        <table className="table table-hover">
+        <Table responsive striped bordered hover variant="light">
           <thead>
             <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Project Category</th>
-            <th scope="col">Type</th>
-            <th scope="col">Priority</th>
-            <th scope="col">Description</th>
-            <th scope="col">Status</th>
-            <th scope="col">Due Date</th>
+            <th >Title</th>
+            <th >Project Category</th>
+            <th >Type</th>
+            <th >Priority</th>
+            <th >Description</th>
+            <th >Status</th>
+            <th >Due Date</th>
             </tr>
           </thead>
           <tbody>
@@ -82,12 +83,12 @@ class TicketEdit extends Component {
         return(
           <tr key={ index }>
             {(this.state.editable == `${ ticket.id }`)?
-              <th scope="row">
+              <th>
               <input type='text'
                 ref={input => this.title = input}
                 defaultValue={ ticket.title }/>
               </th>:
-              <th scope="row">
+              <th>
                 <a href = {`/ticketindex/${ticket.id}`}>{ ticket.title }</a>
               </th>}
 
@@ -145,7 +146,7 @@ class TicketEdit extends Component {
           )
         })}
           </tbody>
-        </table>
+        </Table>
         
         { this.state.success && <Redirect to="/ticketindex"/> }
         

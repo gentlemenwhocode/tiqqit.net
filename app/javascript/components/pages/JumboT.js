@@ -1,7 +1,8 @@
 import React from "react"
 import "../../stylesheets/application.scss"
+import tiqqit_word from "../../stylesheets/img/tiqqit_word.png"
 
-import {Jumbotron} from 'react-bootstrap'
+import {Jumbotron, Image} from 'react-bootstrap'
 
 
 class JumboT extends React.Component {
@@ -10,8 +11,8 @@ class JumboT extends React.Component {
 
     return (
       <React.Fragment>
-        <Jumbotron>
-            <h1>Welcome to Tiqqit.net</h1>
+        <Jumbotron className="jumbotron-1">
+            <Image className="jumbotron-1-img"src={tiqqit_word} fluid /> 
         </Jumbotron>
       </React.Fragment>
     );

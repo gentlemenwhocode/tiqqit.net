@@ -31,28 +31,28 @@ class Header extends React.Component {
                 alt="React Bootstrap logo"
                 ></img>
                 </Nav.Link> 
-              {logged_in && <Nav.Link href="/ticketindex">
-                <p>All Tickets</p>
+              {logged_in && <Nav.Link href="/ticketindex" >
+                <p style={{marginTop: "1rem"}}>All Tickets</p>
               </Nav.Link>}
 
-              {logged_in &&<Nav.Link href="/mytickets">
-                <p>My Tickets</p>
+              {logged_in &&<Nav.Link href="/mytickets" >
+                <p style={{marginTop: "1rem"}}>My Tickets</p>
               </Nav.Link>}
 
-              {logged_in && <Nav.Link href="/newticket">
-                <p >Create A New Ticket</p>
+              {logged_in && <Nav.Link href="/newticket" >
+                <p style={{marginTop: "1rem"}}>Create A New Ticket</p>
               </Nav.Link>}
 
-              {!logged_in && <Nav.Link href={sign_in_route}>
-                <p>Sign In</p>
+              {!logged_in && <Nav.Link href={sign_in_route} >
+                <p style={{marginTop: "1rem"}}>Sign In</p>
               </Nav.Link>}
 
               {!logged_in && <Nav.Link href="/users/sign_up">
-                <p>Sign Up</p>
+                <p style={{marginTop: "1rem"}}>Sign Up</p>
               </Nav.Link>}
 
               {logged_in && <Nav.Link href={sign_out_route}>
-                <p>Sign Out</p>
+                <p style={{marginTop: "1rem"}}>Sign Out</p>
               </Nav.Link>}
 
               </Nav>

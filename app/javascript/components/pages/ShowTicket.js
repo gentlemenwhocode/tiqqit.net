@@ -100,12 +100,13 @@ class ShowTicket extends Component {
     const { ticket, user, editable } = this.state
       return(
         <React.Fragment>
+          <br></br>
             {!editable && 
               <Card
               className="w-50 p-3"
               style={{width: "20rem", marginLeft: "auto",
               marginRight: "auto", alignItems: "center",
-              justifyContent: "center"}}
+              justifyContent: "center", boxShadow: "1px 2px 4px rgba(0, 0, 0, .6)"}}
               bg={'success'}
               text={'light'}
               >
@@ -124,16 +125,16 @@ class ShowTicket extends Component {
                 <Card.Text> LAST UPDATED: {ticket.updated_at}</Card.Text>
                 
                 {ticket.image_url &&
-                <Button variant="primary" onClick={this.handleShow} style={{width: "20rem", marginLeft: "auto",
-                marginRight: "auto", alignItems: "center",
-                justifyContent: "center"}}>
+                <Button variant="primary" onClick={this.handleShow} style={{marginLeft: "auto",
+                marginRight: "auto", display: "flex", alignItems: "center",
+                justifyContent: "center", maxWidth: "50%"}}>
                 See Image
                 </Button>}
 
                 {!ticket.image_url &&
-                <Button variant="primary" style={{width: "20rem", marginLeft: "auto",
-                marginRight: "auto", alignItems: "center",
-                justifyContent: "center"}} >
+                <Button variant="primary" style={{marginLeft: "auto",
+                marginRight: "auto", display: "flex", alignItems: "center",
+                justifyContent: "center", maxWidth: "50%"}} >
                 No Image Attached
                 </Button>}
 
@@ -168,7 +169,7 @@ class ShowTicket extends Component {
                 <Card.Title>PRIORITY: 
                   <select type='text'
                   ref={select => this.priority = select}
-                  defaultValue={ ticket.priority}>
+                  defaultValue={ ticket.priority }>
                     <option value=""> </option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -195,9 +196,16 @@ class ShowTicket extends Component {
                           ref={input => this.status = input}
                           defaultValue={ ticket.status} />
                 </Card.Text>
-                <Card.Text> DUE DATE:<input type='text'
+                <Card.Text> DUE DATE:
+                  <input type='datetime-local'
                           ref={input => this.due_date = input}
-                          defaultValue={ ticket.due_date} />
+                          defaultValue={
+                           ticket.due_date}
+                           id="meeting-time"
+                           name="due_date"
+                           min="2020-04-17T00:00"
+                           max="2025-12-31T00:00"
+                          />
                 </Card.Text>
                 <Card.Text> COMMENTS: {ticket.comments} </Card.Text>
                 <Card.Text> CREATED ON: {ticket.created_at} </Card.Text>

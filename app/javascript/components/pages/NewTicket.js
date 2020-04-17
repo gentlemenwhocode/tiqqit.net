@@ -1,6 +1,6 @@
 import React from "react"
 import { Redirect } from "react-router-dom"
-import {Form, InputGroup, Button} from 'react-bootstrap'
+import {Form, InputGroup, Button, Card} from 'react-bootstrap'
 
 
 class NewTicket extends React.Component {
@@ -36,8 +36,17 @@ class NewTicket extends React.Component {
         console.log(this.state.form.due_date)
         return(
         <>
+        <br></br>
+        <Card
+            className="w-50 p-3 "
+            style={{width: "20rem", marginLeft: "auto",
+            marginRight: "auto", alignItems: "center",
+            justifyContent: "center", boxShadow: "1px 2px 4px rgba(0, 0, 0, .5)", overflow: "hidden"}}
+            bg={'dark'}
+            text={'light'}
+            >
             <Form>
-            <Form.Group style={{width: "30rem", margin:"0.5rem 2rem"}}>
+            <Form.Group>
                 <Form.Label htmlFor="title" id="title">Title</Form.Label>
                     <InputGroup>
                     <Form.Control
@@ -148,11 +157,15 @@ class NewTicket extends React.Component {
             </Form.Group>
              {/* CHANGE REDIRECT */}
             <Button type="submit"
-              onClick={ this.handleSubmit }>
+              onClick={ this.handleSubmit }
+              style={{marginLeft: "auto",
+              marginRight: "auto", display: "flex", alignItems: "center",
+              justifyContent: "center", maxWidth: "50%"}}>
               Create a New Ticket
             </Button>
               { this.state.success && <Redirect to="/ticketindex"/> }
             </Form>
+            </Card>
         </>    
         )
     }

@@ -9,6 +9,7 @@ import ShowTicket from "./pages/ShowTicket"
 import TicketEdit from "./pages/TicketEdit"
 import TicketImage from "./pages/TicketImage"
 import JumboT  from "./pages/JumboT"
+import NotFoundPage from "./pages/NotFoundPage"
 
 class App extends React.Component {
   constructor() {
@@ -104,6 +105,8 @@ class App extends React.Component {
             {...props}
             tickets={ this.state.tickets }
             /> } />
+
+          <Route path="*" component={NotFoundPage} />
 
         </Switch>
       </Router>

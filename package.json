@@ -21,6 +21,7 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.1",
+    "react-shadow-scroll": "^1.0.0",
     "react_ujs": "^2.6.1",
     "reactstrap": "^8.4.1",
     "turbolinks": "^5.2.0"

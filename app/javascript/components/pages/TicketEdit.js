@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect, Link } from "react-router-dom"
-import {Table} from 'react-bootstrap'
+import {Table, Button} from 'react-bootstrap'
 
 class TicketEdit extends Component {
     constructor(props){
@@ -132,15 +132,21 @@ class TicketEdit extends Component {
               <td>{ ticket.due_date }</td>}
 
             <td>
-            <button type="button" className="btn btn-danger btn-sm"
+            <div className="buttons" style={{marginLeft: "auto",
+              marginRight: "auto", display: "flex", alignItems: "center",
+              justifyContent: "space-evenly"}}>
+            <Button variant="danger"
               onClick={() => this.handleDelete(`${ ticket.id }`)}
-              style={{margin:"0 0.5em"}}>
-              Delete</button>
-            <button type="button" className="btn btn-info btn-sm"
+              >
+              Delete</Button>
+            <Button variant="warning"
               onClick={() => this.handleEdit(`${ ticket.id }`)}
-              style={{margin:"0 0.5em"}}>
-              {(this.state.editable == `${ ticket.id }`)? 'Submit' : 'Edit'}</button>
-            <Link to={`/ticketimage/${ticket.id}`}>Upload Image</Link> 
+              >
+              {(this.state.editable == `${ ticket.id }`)? 'Submit' : 'Edit'}</Button>
+            <Button variant="info">
+            <Link to={`/ticketimage/${ticket.id}`} style={{color: "white"}}>Upload Image</Link> 
+            </Button>
+            </div>
             </td>
           </tr>
           )

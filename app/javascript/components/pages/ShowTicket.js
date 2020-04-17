@@ -166,9 +166,17 @@ class ShowTicket extends Component {
                   </Card.Header>
               <Card.Body>
                 <Card.Title>PRIORITY: 
-                  <input type='text'
-                  ref={input => this.priority = input}
-                  defaultValue={ ticket.priority}/>
+                  <select type='text'
+                  ref={select => this.priority = select}
+                  defaultValue={ ticket.priority}>
+                    <option value=""> </option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                  
                   </Card.Title>
                 <Card.Text> CREATED BY: {ticket.user_email} </Card.Text>
                 <Card.Text> PROJECT CATEGORY: <input type='text'

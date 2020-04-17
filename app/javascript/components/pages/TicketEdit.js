@@ -12,7 +12,7 @@ class TicketEdit extends Component {
       }
 
       handleDelete = (id) => {
-        fetch(`http://www.tiqqit.net/tickets/${id}`, {
+        fetch(`http://localhost:3000/tickets/${id}`, {
           method: 'DELETE',
            headers: {
              'Content-Type': 'application/json'
@@ -48,7 +48,7 @@ class TicketEdit extends Component {
          }
 
          handleUpdate = (ticket, id) => {
-            fetch(`http://www.tiqqit.net/tickets/${id}`,
+            fetch(`http://localhost:3000/tickets/${id}`,
             {
               method: 'PUT',
               body: JSON.stringify({ticket: ticket}),

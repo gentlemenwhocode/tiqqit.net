@@ -34,6 +34,7 @@ class App extends React.Component {
     })
     .then((ticketsArray) =>{
       this.setState({
+        isLoaded: true,
         tickets: ticketsArray.tickets
       })
     })

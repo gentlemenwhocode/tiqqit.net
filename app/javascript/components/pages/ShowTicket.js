@@ -25,7 +25,7 @@ class ShowTicket extends Component {
 
   getTicket = () => {
     const { id } = this.props.match.params
-    fetch(`http://localhost:3000/tickets/${id}`)
+    fetch(`http://www.tiqqit.net/tickets/${id}`)
     .then((response) => {
       if(response.status === 200) {
         return(response.json())
@@ -58,7 +58,7 @@ class ShowTicket extends Component {
   }
 
   handleDelete = (id) => {
-    fetch(`http://localhost:3000/tickets/${id}`, {
+    fetch(`http://www.tiqqit.net/tickets/${id}`, {
       method: 'DELETE',
        headers: {
          'Content-Type': 'application/json'
@@ -75,7 +75,7 @@ class ShowTicket extends Component {
     }
 
     handleUpdate = (ticket, id) => {
-      fetch(`http://localhost:3000/tickets/${id}`,
+      fetch(`http://www.tiqqit.net/tickets/${id}`,
       {
         method: 'PUT',
         body: JSON.stringify({ticket: ticket}),

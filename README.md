@@ -1,6 +1,6 @@
 # Tiqqit.net
 
-Tiqqit is an open source bug tracking tool utilizing Devise as its account authorization and authentication. 
+Tiqqit is an open source bug tracking tool utilizing Devise as its account authorization and authentication. It also utilized the giphy API for some fun easter eggs.  
 
 It was designed and developed by [Rudy Becker](https://github.com/RudyBecker), [Tsz Li](https://github.com/bli013), [Danny Romero](https://github.com/fdromero32) and [Andee Isaacs](https://github.com/alyxender) as their [LEARN Academy](https://www.learnacademy.org/) 2020 capstone project. 
 

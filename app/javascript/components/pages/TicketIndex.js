@@ -6,6 +6,9 @@ class TicketIndex extends React.Component {
   render(){
       return(
         <React.Fragment>
+
+          {/* import table component with React Bootstrap keywords for styling */}
+
           <Table responsive striped bordered hover variant="light">
           <thead>
             <tr>
@@ -21,6 +24,9 @@ class TicketIndex extends React.Component {
             </tr>
           </thead>
           <tbody>
+            
+            {/* maps through all tickets and displays their contents */}
+
         { this.props.tickets.map((ticket, index) => {
         return(
           <tr key={ index }>

@@ -14,17 +14,23 @@ import NotFoundPage from "./pages/NotFoundPage"
 class App extends React.Component {
   constructor() {
     super()
+
+    // sets state to empty array upon initialization, once fetch called fills empty array with tickets
+
     this.state = {
       tickets: [],
-      myTickets: []
     }
     this.getTickets()
   }
+
+  // Called immediately after a component is mounted. Setting state here will trigger re-rendering.
 
   componentDidMount(){
     this.getTickets()
   }
 
+  // fetches all tickets 
+  
   getTickets = () => {
     fetch("http://localhost:3000/tickets")
     .then((response)=>{
@@ -38,6 +44,8 @@ class App extends React.Component {
       })
     })
   }
+
+  // fetches POST request method that stores information for newly created ticket
 
   createTicket = (newTicket) => {
     return fetch("http://localhost:3000/tickets", {
@@ -55,6 +63,9 @@ class App extends React.Component {
   }
 
   render () {
+
+    // RAILS props from devise
+
     const {
       logged_in,
       sign_in_route,
@@ -70,17 +81,18 @@ class App extends React.Component {
         sign_in_route = { sign_in_route }
         sign_out_route = { sign_out_route }
         current_user = { current_user }
-        myTickets = { this.state.myTickets }
+    
       />
         
         <Router>
+          {/* Router that passes down props to child components and redirects */}
         <Switch>
             <Route
             exact path="/"
             component= { JumboT } />
             <Route
             exact path="/ticketindex/"
-            render={ (props) => <TicketIndex tickets={ this.state.tickets } /> } />
+            render={ (props) => <TicketIndex {...props} tickets={ this.state.tickets } /> } />
             <Route
             exact path="/ticketindex/:id"
             render={ (props) => <ShowTicket {...props}
@@ -89,7 +101,7 @@ class App extends React.Component {
             /> } />
             <Route
             exact path="/newticket/"
-            render={ (props) => <NewTicket handleSubmit={ this.createTicket} /> } />
+            render={ (props) => <NewTicket {...props} handleSubmit={ this.createTicket} /> } />
 
             <Route
             exact path="/mytickets/"

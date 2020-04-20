@@ -6,6 +6,9 @@ import {Form, InputGroup, Button, Card} from 'react-bootstrap'
 class NewTicket extends React.Component {
     constructor(props){
         super(props)
+        // state will allow new ticket to be dynamically created
+        // success allows for submit functionality
+        // form sets values to blank 
         this.state = {
             success: false, 
             form: {
@@ -21,23 +24,25 @@ class NewTicket extends React.Component {
 
         }
     }
+    //updates the state of our form 
     handleChange = (event) => {
         let { form } = this.state
         form[event.target.name] = event.target.value
         this.setState({ form: form })
       }
-    
+
+    //allows submit functionality
     handleSubmit = (event) => {
         event.preventDefault()
         this.props.handleSubmit(this.state.form)
         this.setState({ success: true })
       }
     render(){
-        console.log(this.state.form.due_date)
         return(
         <>
         <br></br>
         <Card
+            // Card properties and styling
             className="w-50 p-3 "
             style={{width: "20rem", marginLeft: "auto",
             marginRight: "auto", alignItems: "center",
@@ -47,6 +52,7 @@ class NewTicket extends React.Component {
             >
             <Form>
             <Form.Group>
+                {/* form component */}
                 <Form.Label htmlFor="title" id="title">Title</Form.Label>
                     <InputGroup>
                     <Form.Control
@@ -155,12 +161,12 @@ class NewTicket extends React.Component {
                     />
                     </InputGroup>
             </Form.Group>
-             {/* CHANGE REDIRECT */}
-            <Button type="submit"
+            {/* Button confirms inputs into form and calls redirect if succesfull */}
+            <Button 
+              className="new-ticket-button"
+              type="submit"
               onClick={ this.handleSubmit }
-              style={{marginLeft: "auto",
-              marginRight: "auto", display: "flex", alignItems: "center",
-              justifyContent: "center", maxWidth: "50%"}}>
+              >
               Create a New Ticket
             </Button>
               { this.state.success && <Redirect to="/ticketindex"/> }

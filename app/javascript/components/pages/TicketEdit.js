@@ -5,11 +5,17 @@ import {Table, Button} from 'react-bootstrap'
 class TicketEdit extends Component {
     constructor(props){
         super(props)
+
+        // success is allowing handleDelete and handleUpdate to work
+        // editable is allowing handleEdit toggle to work 
+
         this.state={
           success: false,
           editable: false
         }
       }
+
+      // allows a single ticket to be deleted by id
 
       handleDelete = (id) => {
         fetch(`http://localhost:3000/tickets/${id}`, {
@@ -28,6 +34,7 @@ class TicketEdit extends Component {
          })
         }
 
+        // allows single ticket to be edited by id
 
         handleEdit = (id) => {
             if(this.state.editable == id){
@@ -46,6 +53,8 @@ class TicketEdit extends Component {
              editable: id
            })}
          }
+
+         // allows single ticket to be updated by id
 
          handleUpdate = (ticket, id) => {
             fetch(`http://localhost:3000/tickets/${id}`,
@@ -66,6 +75,7 @@ class TicketEdit extends Component {
     
     return (
       <React.Fragment>
+        {/* import Table component and included keywords to style from React Bootstrap */}
         <Table responsive striped bordered hover variant="light">
           <thead>
             <tr>
@@ -79,9 +89,11 @@ class TicketEdit extends Component {
             </tr>
           </thead>
           <tbody>
+            {/* maps through all tickets in database and permits each ticket to be edited by id */}
         { this.props.tickets.map((ticket, index) => {
         return(
           <tr key={ index }>
+            {/* tells handleEdit method that if the id matches the state of editable then ternary allows us to edit the ticket  */}
             {(this.state.editable == `${ ticket.id }`)?
               <th>
               <input type='text'
@@ -153,6 +165,8 @@ class TicketEdit extends Component {
         })}
           </tbody>
         </Table>
+
+        {/* upon succesfull editing redirects to MyTickets */}
         
         { this.state.success && <Redirect to="/mytickets"/> }
         

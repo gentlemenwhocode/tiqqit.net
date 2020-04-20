@@ -37,7 +37,7 @@ class NotFoundPage extends React.Component {
   }
     // This lil bad-boy right here checks to see if the state has been set by the fetch call has changed the state yet. if not, show a loading bar. If not, go ahead and render the rest of the page.
     render(){
-        var { isLoaded, gifs } = this.state;
+        var { isLoaded } = this.state;
         
         if(!isLoaded) {
             return <div> LOADING...</div>

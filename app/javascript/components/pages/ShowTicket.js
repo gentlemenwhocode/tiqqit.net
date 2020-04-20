@@ -7,9 +7,17 @@ import {Card, Modal, Button} from 'react-bootstrap'
 class ShowTicket extends Component {
   constructor(props){
     super(props)
+
+    // For a given function, creates a bound function that has the same body as the original function. The this object of the bound function is associated with the specified object, and has the specified initial parameters.
+
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
     
+    // state is set to empty array of tickets upon initialization
+    // success is allowing handleDelete and handleUpdate to work
+    // editable is allowing handleEdit toggle to work 
+    // show is allowing Modal functionality to work
+
     this.state = {
       ticket:[],
       success: false,
@@ -19,9 +27,13 @@ class ShowTicket extends Component {
     this.getTicket()
   }
 
+  // Called immediately after a component is mounted. Setting state here will trigger re-rendering.
+
   componentDidMount(){
     this.getTicket()
   }
+
+  // fetches single tickets by id
 
   getTicket = () => {
     const { id } = this.props.match.params
@@ -36,8 +48,9 @@ class ShowTicket extends Component {
         ticket: ticketInfo
       })
     })
- 
   }
+
+  // allows single ticket to be edited by id
 
   handleEdit = (id) => {
     if(this.state.editable == id){
@@ -57,6 +70,8 @@ class ShowTicket extends Component {
    })}
   }
 
+  // allows a single ticket to be deleted by id
+
   handleDelete = (id) => {
     fetch(`http://localhost:3000/tickets/${id}`, {
       method: 'DELETE',
@@ -74,6 +89,8 @@ class ShowTicket extends Component {
      })
     }
 
+    // allows single ticket to be updated by id
+
     handleUpdate = (ticket, id) => {
       fetch(`http://localhost:3000/tickets/${id}`,
       {
@@ -88,13 +105,19 @@ class ShowTicket extends Component {
         })
     }
 
+    // allows toggle feature for Modal
+
     handleClose() {
       this.setState({ show: false });
     }
-  
+
+    // allows toggle feature for Modal
+
     handleShow() {
       this.setState({ show: true });
     }
+
+    // allows input date form field to be populated upon initialization
 
     defaultDate = () => {
       document.getElementById('datePicker').value = new Date().toDateInputValue();
@@ -105,6 +128,9 @@ class ShowTicket extends Component {
       return(
         <React.Fragment>
           <br></br>
+
+            {/* if editable is false simply renders information without ability to edit */}
+
             {!editable && 
               <Card
               className="w-50 p-3"
@@ -127,7 +153,9 @@ class ShowTicket extends Component {
                 <Card.Text> COMMENTS: {ticket.comments}</Card.Text>
                 <Card.Text> CREATED ON: {ticket.created_at}</Card.Text>
                 <Card.Text> LAST UPDATED: {ticket.updated_at}</Card.Text>
-                
+
+                {/* toggle functionality for image button based on if image is uploaded to database or not */}
+
                 {ticket.image_url &&
                 <Button variant="primary" onClick={this.handleShow} style={{marginLeft: "auto",
                 marginRight: "auto", display: "flex", alignItems: "center",
@@ -142,6 +170,8 @@ class ShowTicket extends Component {
                 No Image Attached
                 </Button>}
 
+                {/* if image is present new window will pop up to show image */}
+
                 <Modal show={this.state.show} onHide={this.handleClose}>
                   <Modal.Header closeButton>
                     <Modal.Title>TITLE: {ticket.title}</Modal.Title>
@@ -152,7 +182,9 @@ class ShowTicket extends Component {
               </Card.Body>
             </Card>
            } 
-          
+
+          {/* if editable is true allows for ability to edit form */}
+
           {editable && 
               <Card
               bg={'warning'}
@@ -201,6 +233,9 @@ class ShowTicket extends Component {
                           defaultValue={ ticket.status} />
                 </Card.Text>
                 <Card.Text> DUE DATE:
+
+                  {/* id of datePicker allows for defaultDate method to execute */}
+
                   <input type='datetime-local'
                           ref={input => this.due_date = input}
                           defaultValue={
@@ -238,6 +273,9 @@ class ShowTicket extends Component {
               Back
             </Button>
         </div>
+
+        {/* if form is fille out correctly page is redirected to My Tickets with newly updated ticket at bottom of screen */}
+        
         { this.state.success && <Redirect to="/ticketindex"/>}
     
         </React.Fragment>

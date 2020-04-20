@@ -1,15 +1,23 @@
 import React, { Component } from 'react'
 import ActiveStorageProvider from 'react-activestorage-provider'
+import {Button} from 'react-bootstrap'
 
 class TicketImage extends Component {
     constructor(props){
         super(props)
+
+        // makes sure the ticket id is converted to a number
+
         const id = parseInt(props.match.params.id)
+
+        // find ticket id and compares to current id and if true then state is set to ticket
+
         const ticket = props.tickets.find(ticket => ticket.id === id )
         this.state={
           ticket
         }
       }
+
 //Ticket photo upload handleSubmit
 
 handleSubmit = (ticket)=>{
@@ -20,6 +28,9 @@ handleSubmit = (ticket)=>{
     const { ticket } = this.state
         return(
             <>
+
+            {/* boolean operator that makes sure ticket is set to true and permits image to be uploaded using Active Storage Provider */}
+
             {ticket &&
                 <div>
                 <h1>Ticket Title: {ticket.title} </h1>
@@ -48,7 +59,8 @@ handleSubmit = (ticket)=>{
                         disabled={!ready}
                         onChange={e => handleUpload(e.currentTarget.files)}
                     />
-            
+
+                    {/* status messages of current upload */}
                     {uploads.map(upload => {
                         switch (upload.state) {
                         case 'waiting':
@@ -71,6 +83,10 @@ handleSubmit = (ticket)=>{
                             )
                         }
                     })}
+                    <Button variant="light"
+                    onClick={() => window.history.back()}>
+                     Back
+                    </Button>
                 </div>
                 )}
                 />

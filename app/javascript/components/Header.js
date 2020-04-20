@@ -2,23 +2,27 @@ import React from "react"
 import "../stylesheets/application.scss"
 import logo from "../stylesheets/img/Tiqqit Bug.png"
 
-import {Jumbotron, Navbar, Nav} from 'react-bootstrap'
+import {Navbar, Nav} from 'react-bootstrap'
 
 
 class Header extends React.Component {
 
   render () {
+
+    // RAILS props passed into React App
+
     const {
       logged_in,
       sign_in_route,
       sign_out_route,
-      edit_user_route,
-      current_user
+
     } = this.props
 
     return (
       <React.Fragment>
         
+        {/* Navar component imported from React Bootstrap with styling */}
+
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -31,6 +35,9 @@ class Header extends React.Component {
                 alt="React Bootstrap logo"
                 ></img>
                 </Nav.Link> 
+
+                {/* based on sign in status Navbar will change to reflect user interface options for that user */}
+
               {logged_in && <Nav.Link href="/ticketindex" >
                 <p style={{marginTop: "1rem"}}>All Tickets</p>
               </Nav.Link>}

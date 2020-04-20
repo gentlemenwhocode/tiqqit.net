@@ -16,9 +16,12 @@
 @import "login_page";
 @import './bootstrap_custom.scss';
 
+
 * {
     overflow: auto;
 }
+
+/* Jumbotron styling */
 
 .jumbotron-1{
     text-align:center;
@@ -29,3 +32,26 @@
     margin-left:auto;
     margin-right:auto;
 }
+
+.jumbotron-p{
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+    display: block;
+    min-width: 50%;
+    font-size: larger;
+    font-weight: bold;
+}
+
+/* New Ticket styling */
+
+.new-ticket-button{
+    margin-left: auto;
+    margin-right: auto;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    max-width: 50%;
+}
+
+

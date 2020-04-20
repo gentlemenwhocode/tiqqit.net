@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ActiveStorageProvider from 'react-activestorage-provider'
+import {Button} from 'react-bootstrap'
 
 class TicketImage extends Component {
     constructor(props){
@@ -82,6 +83,10 @@ handleSubmit = (ticket)=>{
                             )
                         }
                     })}
+                    <Button variant="light"
+                    onClick={() => window.history.back()}>
+                     Back
+                    </Button>
                 </div>
                 )}
                 />

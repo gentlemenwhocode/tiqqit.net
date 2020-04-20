@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-
+import {Image} from 'react-bootstrap'
 class NotFoundPage extends React.Component {
     constructor(props){
         super(props)
@@ -33,14 +33,27 @@ class NotFoundPage extends React.Component {
 
     render(){
         var { isLoaded, gifs } = this.state;
-        console.log(this.state.gifs)
+        
         if(!isLoaded) {
             return <div> LOADING...</div>
         } else {
+            console.log(this.state.gifs)
+
+
         return (
         <React.Fragment>
-            <h1> Oh, no! A 404! Maybe you should write a tiqqit about it! </h1>
-            <Link to="/"> Go back to the home page, you dummy</Link>
+       
+            { this.state.gifs.map((data, index) => {
+                return (
+                    <div key={ index }>
+                        <Image src={ data.images.downsized_large.url }/>
+                    </div>
+                )
+              }
+            )}
+
+            <h1> Oh, no! A 404! Write a tiqqit about it! </h1>
+            <Link to="/"> Go back to the home page</Link>
         </React.Fragment>
         )}
     }

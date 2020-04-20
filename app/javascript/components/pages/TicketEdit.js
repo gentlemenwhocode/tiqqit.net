@@ -154,7 +154,7 @@ class TicketEdit extends Component {
           </tbody>
         </Table>
         
-        { this.state.success && <Redirect to="/ticketindex"/> }
+        { this.state.success && <Redirect to="/mytickets"/> }
         
       </React.Fragment>
       );

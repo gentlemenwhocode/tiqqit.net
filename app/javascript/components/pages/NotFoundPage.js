@@ -1,25 +1,28 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import {Image} from 'react-bootstrap'
+import { Image } from 'react-bootstrap'
+import {
+    Card, CardHeader, CardImg, CardText, CardBody,
+    CardTitle, CardSubtitle, Button
+  } from 'reactstrap';
 
 class NotFoundPage extends React.Component {
     constructor(props){
         super(props)
-        // fetch request uploads the gifs state which is set to an empty array at initialization
         this.state = {
-            gifs: [],
+            gifs: null,
             isLoaded: false
         }
         this.getGifs()
     }
-        // Called immediately after a component is mounted. Setting state here will trigger re-rendering.
+    //React lifecyle check, if the component mounted, run the get.Gifs method. 
         componentDidMount() {
             this.getGifs()
         }
 
-    // fetch request to giphy API
+    //This will do a fetch request to the Giphy API, if the response is OK it will then setstate of Gif's to a json object with the key of data.
     getGifs = () => {
-        fetch(`https://api.giphy.com/v1/gifs/search?q=fail&api_key=zpIByyzSBrKBLfSgwgwdfzqhYRoqluQn&limit=1`)
+        fetch(`https://api.giphy.com/v1/gifs/random?api_key=zpIByyzSBrKBLfSgwgwdfzqhYRoqluQn&tag=fail&rating=PG-13`)
        .then((response)=>{
            if(response.status === 200) {
                return(response.json())
@@ -32,30 +35,24 @@ class NotFoundPage extends React.Component {
            })
             })
   }
-
+    // This lil bad-boy right here checks to see if the state has been set by the fetch call has changed the state yet. if not, show a loading bar. If not, go ahead and render the rest of the page.
     render(){
-        // deconstructing state to use in render
         var { isLoaded, gifs } = this.state;
         
-        // logic to render a gif if request invalid will return LOADING... otherwise will return gif from API
         if(!isLoaded) {
             return <div> LOADING...</div>
         } else {
-
         return (
         <React.Fragment>
-            {/* this maps through giphy payload and renders gif */}
-            { this.state.gifs.map((data, index) => {
-                return (
-                    <div key={ index }>
-                        <Image src={ data.images.downsized_large.url }/>
-                    </div>
-                )
-              }
-            )}
-
-            <h1> Oh, no! A 404! Write a tiqqit about it! </h1>
-            <Link to="/"> Go back to the home page</Link>
+                    <Card style={{marginLeft:"65px", marginTop:"50px", maxWidth:"400px"}}>
+                        <CardHeader> Oof, thats a 404! </CardHeader>
+                        <CardImg style={{maxWidth: "400px"}} src={ this.state.gifs.images.downsized_large.url } alt="404 error gif"/>
+                        <CardBody>
+                            <CardText> Looks like you tried to go somewhere that doesnt exist!</CardText>
+                            <CardText><Link to="/"> Go back to the home page</Link></CardText>
+                        </CardBody>
+                    </Card>
+                
         </React.Fragment>
         )}
     }

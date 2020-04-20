@@ -25,7 +25,7 @@ class ShowTicket extends Component {
 
   getTicket = () => {
     const { id } = this.props.match.params
-    fetch(`http://www.tiqqit.net/tickets/${id}`)
+    fetch(`http://localhost:3000/tickets/${id}`)
     .then((response) => {
       if(response.status === 200) {
         return(response.json())
@@ -58,7 +58,7 @@ class ShowTicket extends Component {
   }
 
   handleDelete = (id) => {
-    fetch(`http://www.tiqqit.net/tickets/${id}`, {
+    fetch(`http://localhost:3000/tickets/${id}`, {
       method: 'DELETE',
        headers: {
          'Content-Type': 'application/json'
@@ -75,7 +75,7 @@ class ShowTicket extends Component {
     }
 
     handleUpdate = (ticket, id) => {
-      fetch(`http://www.tiqqit.net/tickets/${id}`,
+      fetch(`http://localhost:3000/tickets/${id}`,
       {
         method: 'PUT',
         body: JSON.stringify({ticket: ticket}),
@@ -94,6 +94,10 @@ class ShowTicket extends Component {
   
     handleShow() {
       this.setState({ show: true });
+    }
+
+    defaultDate = () => {
+      document.getElementById('datePicker').value = new Date().toDateInputValue();
     }
     
   render(){
@@ -201,7 +205,7 @@ class ShowTicket extends Component {
                           ref={input => this.due_date = input}
                           defaultValue={
                            ticket.due_date}
-                           id="meeting-time"
+                           id="datePicker"
                            name="due_date"
                            min="2020-04-17T00:00"
                            max="2025-12-31T00:00"

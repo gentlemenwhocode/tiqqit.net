@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :tickets
   devise_for :users
   get '*path', to: 'index#index', constraints: ->(request){ request.format.html? } 
+  resources :tickets
   root to: 'index#index'
   # as :user do
   #   post 'sign_in_route', to: 'devise/sessions#create', as: :user_session

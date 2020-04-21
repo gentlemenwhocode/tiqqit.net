@@ -44,8 +44,7 @@ handleSubmit = (ticket)=>{
                     endpoint={{
                     // tickets.id <= ticket.id ln:35
                     path: `/tickets/${ticket.id}`,
-                    host: 'localhost',
-                    port: 3000,
+                    host: 'www.tiqqit.net',
                     protocol: 'http',
                     model: 'Ticket',
                     attribute: 'image',

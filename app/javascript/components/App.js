@@ -83,13 +83,20 @@ class App extends React.Component {
         current_user = { current_user }
     
       />
-        
+
         <Router>
           {/* Router that passes down props to child components and redirects */}
         <Switch>
+        {logged_in &&
             <Route
             exact path="/"
-            component= { JumboT } />
+            component= { (props) => <TicketIndex {...props} tickets={ this.state.tickets } />  } />
+        }
+        
+        {!logged_in &&
+        <Route
+        exact path="/"
+        component={ JumboT } />}
             <Route
             exact path="/ticketindex/"
             render={ (props) => <TicketIndex {...props} tickets={ this.state.tickets } /> } />

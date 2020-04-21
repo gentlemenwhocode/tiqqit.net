@@ -3,6 +3,7 @@ class TicketsController < ApplicationController
   before_action :authenticate_user!, only: [:update, :destroy, :create]
   skip_before_action :verify_authenticity_token
 
+  
   def index
     @tickets = Ticket.all
     if current_user == nil
@@ -41,4 +42,5 @@ class TicketsController < ApplicationController
   def ticket_params
     params.require(:ticket).permit(:title, :project_cat, :prob_cat, :priority, :desc, :status, :due_date, :image, :comments)
   end
+  
 end

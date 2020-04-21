@@ -87,8 +87,9 @@ class App extends React.Component {
         <Router>
           {/* Router that passes down props to child components and redirects */}
         <Switch>
+
         {logged_in &&
-            <Route
+        <Route
             exact path="/"
             component= { (props) => <TicketIndex {...props} tickets={ this.state.tickets } />  } />
         }
@@ -97,33 +98,40 @@ class App extends React.Component {
         <Route
         exact path="/"
         component={ JumboT } />}
-            <Route
+
+        {logged_in && 
+        <Route
             exact path="/ticketindex/"
-            render={ (props) => <TicketIndex {...props} tickets={ this.state.tickets } /> } />
-            <Route
+            render={ (props) => <TicketIndex {...props} tickets={ this.state.tickets } /> } />}
+
+        {logged_in &&
+        <Route
             exact path="/ticketindex/:id"
             render={ (props) => <ShowTicket {...props}
             tickets={ this.state.tickets }
             getTickets={ this.getTickets }
-            /> } />
-            <Route
-            exact path="/newticket/"
-            render={ (props) => <NewTicket {...props} handleSubmit={ this.createTicket} /> } />
+            /> } />}
 
-            <Route
+        {logged_in && 
+        <Route
+            exact path="/newticket/"
+            render={ (props) => <NewTicket {...props} handleSubmit={ this.createTicket} /> } />}
+
+        {logged_in &&
+        <Route
             exact path="/mytickets/"
             render={ (props) => <TicketEdit
             {...props}
             tickets={ this.state.tickets }
             getTickets={ this.getTickets }
-            /> } />
+            /> } />}
             
-            <Route
+        {logged_in && <Route
             exact path="/ticketimage/:id"
             render={ (props) => <TicketImage
             {...props}
             tickets={ this.state.tickets }
-            /> } />
+            /> } />}
 
           <Route path="*" component={NotFoundPage} />
 
